@@ -59,8 +59,8 @@ function ResponsiveDrawer(props) {
     { label: 'Services', path: '/salonService' },
     { label: 'Products', path: '/products' },
     { label: 'Elegance AI', path: '/eleganceAi' },
-    { label: 'Login', path: '/login' },
-    { label: 'Register', path: '/register' },
+    { label: 'Sign In', path: '/login' },
+    { label: 'Sign Up', path: '/register' },
   ];
 
   return (

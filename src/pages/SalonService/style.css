@@ -1,0 +1,15 @@
+.caption {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.caption .round-icard h4 {
+    font-size: 15px;
+    color: #769926;
+}
+
+.caption .round-icard h6 {
+    font-size: 30px;
+    color:#992626;
+    width:100%;
+}
