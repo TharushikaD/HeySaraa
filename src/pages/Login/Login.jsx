@@ -12,6 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import axios from 'axios';
+import { Alert } from '../../components/Alert/Alert';
 
 function Copyright(props) {
   return (
@@ -29,6 +32,58 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError(true);
+      isValid = false;
+    } else {
+      setEmailError(false);
+    }
+
+    if (password.length < 6) {
+      setPasswordError(true);
+      isValid = false;
+    } else {
+      setPasswordError(false);
+    }
+
+    return isValid;
+  };
+
+  const loginAction = () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    axios
+      .post('http://127.0.0.1:5000/login', {
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        console.log(response);
+        Alert('Success', 'Signing In!', 'success');
+        clearText();
+      })
+      .catch(function (error) {
+        console.log(error);
+        Alert('Failed', 'Something Went Wrong!', 'error');
+      });
+  };
+
+  const clearText = () => {
+    setEmail('');
+    setPassword('');
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,7 +125,7 @@ export default function SignInSide() {
               <LockOutlinedIcon/>
             </Avatar>
             <Typography component="h1" variant="h5" sx={{color:'#992626', fontWeight:'600'}}>
-              Login
+              Sign In
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -82,6 +137,9 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                error={emailError}
+                helperText={emailError ? 'Invalid email format' : ''}
+                onChange={(event) => setEmail(event.target.value)}
               />
               <TextField
                 margin="normal"
@@ -92,6 +150,9 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                error={passwordError}
+                helperText={passwordError ? 'Password must be at least 6 characters' : ''}
+                onChange={(event) => setPassword(event.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" />}
@@ -108,9 +169,8 @@ export default function SignInSide() {
                   backgroundColor:'#d89685',
                   "&:hover": {
                     backgroundColor:'#992626',
-                }
-                
-                }}
+                } }}
+                onClick={loginAction}
               >
                 Sign In
               </Button>
@@ -121,7 +181,7 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="http://localhost:5177/register" variant="body2" sx={{color:'#9b897d'}}>
+                  <Link href="http://localhost:5173/register" variant="body2" sx={{color:'#9b897d'}}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
