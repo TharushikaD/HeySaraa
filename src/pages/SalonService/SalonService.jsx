@@ -6,7 +6,7 @@ export default function SalonService() {
   return (
     <div className="container-fluid p-0">
       <img
-        src='Services1.png'
+        src='service.png'
         alt="carsoulimg"
         className="service img-fluid w-100"
       />
