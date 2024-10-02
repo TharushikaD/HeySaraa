@@ -70,13 +70,14 @@ function ResponsiveDrawer(props) {
         position="fixed"
         sx={{
           width: '100%',
-          backgroundColor: '#ffe9d7',
-          height: '150px'
+          backgroundColor: '#8d6e63', 
+          height: '90px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
         }}
       >
         <Toolbar>
           <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-            <img src="/HeySaraa.png" alt="logo" style={{ height: '150px' }} />
+            <img src="/logo2.png" alt="logo" style={{ height: '90px' }} />
           </Box>
           {isMobile ? (
             <>
@@ -111,10 +112,29 @@ function ResponsiveDrawer(props) {
             </>
           ) : (
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-                <Tabs value={mainTabValue} onChange={handleMainTabChange} aria-label="centered tabs" TabIndicatorProps={{
-                  style: { display: 'none' }
-                }} >
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  padding: '0 20px',
+                }}
+              >
+                <Tabs
+                  value={mainTabValue}
+                  onChange={handleMainTabChange}
+                  aria-label="centered tabs"
+                  TabIndicatorProps={{
+                    style: { display: 'none' },
+                  }}
+                  sx={{
+                    '& .MuiTab-root': {
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      padding: '12px 24px',
+                    },
+                  }}
+                >
                   {tabs.slice(0, 5).map((tab, index) => (
                     <Tab
                       key={tab.label}
@@ -122,21 +142,38 @@ function ResponsiveDrawer(props) {
                       component={Link}
                       to={tab.path}
                       sx={{
-                        fontSize:'16px',
-                        fontWeight: '900',
-                        color: '#0b0a09',
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#E8D3B5', 
                         textDecoration: 'none',
+                        transition: 'color 0.3s ease',
+                        '&:hover': {
+                          color: '#D4B499', 
+                        },
                         '&.Mui-selected': {
-                          color: '#563412',
+                          color: '#FFFFFF', 
+                          backgroundColor: '#704F41', 
                         },
                       }}
                     />
                   ))}
                 </Tabs>
               </Box>
-              <Tabs value={actionTabValue} onChange={handleActionTabChange} aria-label="right-aligned tabs" TabIndicatorProps={{
-                style: { display: 'none' }
-              }} sx={{ flexGrow: 0 }}>
+              <Tabs
+                value={actionTabValue}
+                onChange={handleActionTabChange}
+                aria-label="right-aligned tabs"
+                TabIndicatorProps={{
+                  style: { display: 'none' },
+                }}
+                sx={{
+                  flexGrow: 0,
+                  '& .MuiTab-root': {
+                    marginRight: '30px',
+                    padding: '12px 24px',
+                  },
+                }}
+              >
                 {tabs.slice(5).map((tab, index) => (
                   <Tab
                     key={tab.label}
@@ -144,12 +181,17 @@ function ResponsiveDrawer(props) {
                     component={Link}
                     to={tab.path}
                     sx={{
-                      fontSize:'16px',
-                      fontWeight: '900',
-                      color: '#0b0a09',
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      color: '#E8D3B5',
                       textDecoration: 'none',
+                      transition: 'color 0.3s ease',
+                      '&:hover': {
+                        color: '#D4B499',
+                      },
                       '&.Mui-selected': {
-                        color: '#563412',
+                        color: '#FFFFFF',
+                        backgroundColor: '#704F41',
                       },
                     }}
                   />
@@ -159,15 +201,9 @@ function ResponsiveDrawer(props) {
           )}
         </Toolbar>
       </AppBar>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: '100%' }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, width: '100%' }}>
         <Toolbar />
-        <Typography paragraph>
-          {/* Add your main content here */}
-          Content for Main Tab {mainTabValue + 1}
-        </Typography>
+        {/* Add your main content here */}
       </Box>
     </Box>
   );

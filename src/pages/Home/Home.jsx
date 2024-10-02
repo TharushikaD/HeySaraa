@@ -2,36 +2,62 @@ import React from 'react'
 import './style.css'
 import RoundICard from '../../components/roundimgcard/RoundICard'
 import Card from 'react-bootstrap/Card';
+import { useState, useEffect } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 export default function Home() {
 
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.querySelector('.container-2');
+      const sectionPosition = section.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+
+      if (sectionPosition < screenPosition) {
+        setFadeIn(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
+
   return (
     <div className="container-fluid p-0">
       <img
-        src="carr.png"
+        src="1.png"
         alt="carsoulimg"
         className="img-fluid w-100"
       />
-      <div className='container-2'>
-        <div className="row align-items-center">
-          <div className="col-md-6 text-center">
-            <img
-              src="owner.png"
-              alt="owner"
-              className="img-fluid owner-image"
-            />
-          </div>
-          <div className="col-md-6 all-descripiton">
-            <h2 className="section-title">MEET THE OWNER</h2>
-            <h1 className="owner-name">Sarangi Warnakulasooriya</h1>
-            <p className="owner-description">
-              Welcome to our salon, a sanctuary of beauty and relaxation nestled in the heart of Kandy. Owned and operated solely by me. I am a passionate and dedicated professional with over 8 years of experience in the beauty industry. This journey began with a simple dream to help individuals express their unique beauty and boost their confidence.
-            </p>
+      <div style={{display:'flex', justifyContent:'center'}}>
+        <div className={`container-2 ${fadeIn ? 'fade-in' : ''}`}>
+          <div className="row align-items-center">
+            <div className="col-md-6 col-sm-12 text-center mb-2">
+              <img
+                src="owner.png"
+                alt="Owner - Sarangi Warnakulasooriya"
+                className="img-fluid owner-image shadow-sm"
+              />
+            </div>
+            <div className="col-md-6 col-sm-12 all-description text-center text-md-start">
+              <h2 className="section-title">Meet the Owner</h2>
+              <h1 className="owner-name">Sarangi Warnakulasooriya</h1>
+              <p className="owner-description">
+                Welcome to our salon, a sanctuary of beauty and relaxation nestled in the heart of Kandy.
+                I am Sarangi, with over 8 years of experience in the beauty industry.
+                My passion is to help individuals express their unique beauty and boost their confidence.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
       <div className='caption'>
         <RoundICard
           title="EXPERTISE AREAS"
@@ -47,7 +73,7 @@ export default function Home() {
           <RoundICard
             src={'customer1.png'}
             title="Professional Service"
-            description="Fulfill your desired look, while offering expert advice and recommendations"
+            description="Offers experts advices and recommendations"
           />
           <RoundICard
             src={'hygine.png'}
