@@ -55,7 +55,6 @@ function ResponsiveDrawer(props) {
 
   const tabs = [
     { label: 'Home', path: '/home' },
-    { label: 'Blog', path: '/blog' },
     { label: 'Services', path: '/salonService' },
     { label: 'Products', path: '/products' },
     { label: 'Elegance AI', path: '/eleganceAi' },
@@ -135,7 +134,7 @@ function ResponsiveDrawer(props) {
                     },
                   }}
                 >
-                  {tabs.slice(0, 5).map((tab, index) => (
+                  {tabs.slice(0, 4).map((tab, index) => (
                     <Tab
                       key={tab.label}
                       label={tab.label}
@@ -174,7 +173,7 @@ function ResponsiveDrawer(props) {
                   },
                 }}
               >
-                {tabs.slice(5).map((tab, index) => (
+                {tabs.slice(4).map((tab, index) => (
                   <Tab
                     key={tab.label}
                     label={tab.label}

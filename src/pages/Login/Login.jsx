@@ -32,7 +32,6 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -95,7 +94,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '78vh' }}>
+      <Grid container component="main" sx={{ height: '90vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -103,15 +102,24 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              'url("public/car1.jpg")',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundImage: 'url("public/car1.jpg")',
             backgroundSize: 'cover',
-            backgroundPosition: 'left',
+            backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{
+            borderRadius: '12px',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+          }}
+        >
           <Box
             sx={{
               my: 8,
@@ -121,16 +129,17 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: '#992626' }}>
-              <LockOutlinedIcon/>
+            <Avatar sx={{ m: 1, bgcolor: '#992626', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
+              <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5" sx={{color:'#992626', fontWeight:'600'}}>
+            <Typography component="h1" variant="h5" sx={{ color: '#992626', fontWeight: '600' }}>
               Sign In
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
+                size='small'
                 fullWidth
                 id="email"
                 label="Email Address"
@@ -140,11 +149,15 @@ export default function SignInSide() {
                 error={emailError}
                 helperText={emailError ? 'Invalid email format' : ''}
                 onChange={(event) => setEmail(event.target.value)}
+                InputProps={{
+                  style: { borderRadius: '12px', boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)' },
+                }}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
+                size='small'
                 name="password"
                 label="Password"
                 type="password"
@@ -153,40 +166,47 @@ export default function SignInSide() {
                 error={passwordError}
                 helperText={passwordError ? 'Password must be at least 6 characters' : ''}
                 onChange={(event) => setPassword(event.target.value)}
+                InputProps={{
+                  style: { borderRadius: '12px', boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)' },
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" />}
                 label="Remember me"
-                sx={{color:'#992626'}}
+                sx={{ color: '#992626' }}
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ 
-                  mt: 3, 
-                  mb: 2, 
-                  backgroundColor:'#d89685',
-                  "&:hover": {
-                    backgroundColor:'#992626',
-                } }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: '#d89685',
+                  '&:hover': {
+                    backgroundColor: '#992626',
+                  },
+                  borderRadius: '12px',
+                  padding: '10px 20px',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                }}
                 onClick={loginAction}
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" sx={{color:'#9b897d'}}>
+                  <Link href="#" variant="body2" sx={{ color: '#9b897d' }}>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="http://localhost:5173/register" variant="body2" sx={{color:'#9b897d'}}>
+                  <Link href="http://localhost:5173/register" variant="body2" sx={{ color: '#9b897d' }}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5,color:'#9b897d' }} />
+              <Copyright sx={{ mt: 5, color: '#9b897d' }} />
             </Box>
           </Box>
         </Grid>

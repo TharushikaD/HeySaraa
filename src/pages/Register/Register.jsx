@@ -16,6 +16,20 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Alert } from '../../components/Alert/Alert';
 
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#d89685', 
+    },
+    secondary: {
+      main: '#992626', 
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto, sans-serif', 
+  },
+});
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -28,8 +42,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
-const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const [name, setName] = useState('');
@@ -107,7 +119,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '78vh' }}>
+      <Grid container component="main" sx={{ height: '80vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -115,14 +127,26 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url("public/girl.jpeg")',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundImage: 'url("/public/girl.jpeg")',
+            backgroundColor: (t) => t.palette.grey[50],
             backgroundSize: 'cover',
-            backgroundPosition: 'left',
+            backgroundPosition: 'center',
+            opacity: 0.9, 
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{
+            backgroundColor: '#f8f8f8',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)', 
+          }}
+        >
           <Box
             sx={{
               my: 8,
@@ -135,12 +159,17 @@ export default function SignInSide() {
             <Avatar sx={{ m: 1, bgcolor: '#992626' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5" sx={{ color: '#992626', fontWeight: '600' }}>
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{ color: '#992626', fontWeight: '600', fontSize: '24px' }}
+            >
               Sign Up
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
               <TextField
                 margin="normal"
+                size='small'
                 required
                 fullWidth
                 id="name"
@@ -149,9 +178,13 @@ export default function SignInSide() {
                 error={nameError}
                 helperText={nameError ? 'Name is required' : ''}
                 onChange={(event) => setName(event.target.value)}
+                InputProps={{
+                  style: { borderRadius: '12px' },
+                }}
               />
               <TextField
                 margin="normal"
+                size='small'
                 required
                 fullWidth
                 id="email"
@@ -162,9 +195,13 @@ export default function SignInSide() {
                 error={emailError}
                 helperText={emailError ? 'Invalid email format' : ''}
                 onChange={(event) => setEmail(event.target.value)}
+                InputProps={{
+                  style: { borderRadius: '12px' },
+                }}
               />
               <TextField
                 margin="normal"
+                size='small'
                 required
                 fullWidth
                 name="password"
@@ -175,6 +212,9 @@ export default function SignInSide() {
                 error={passwordError}
                 helperText={passwordError ? 'Password must be at least 6 characters' : ''}
                 onChange={(event) => setPassword(event.target.value)}
+                InputProps={{
+                  style: { borderRadius: '12px' },
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" />}
@@ -192,6 +232,8 @@ export default function SignInSide() {
                   '&:hover': {
                     backgroundColor: '#992626',
                   },
+                  borderRadius: '12px',
+                  padding: '12px 20px',
                 }}
                 onClick={registerAction}
               >
