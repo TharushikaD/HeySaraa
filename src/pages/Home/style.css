@@ -6,7 +6,7 @@ body{
   .container-2 {
     display: flex;
     flex-direction: row;
-    margin: 50px;
+    margin: 30px; 
     justify-content: center;
     padding: 40px;
     background-color: #f8f5f1;
@@ -16,7 +16,8 @@ body{
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
-  }
+}
+
   
   .fade-in {
     opacity: 1;
@@ -150,11 +151,7 @@ body{
 .container-3 .round-icard h6 {
     color: #5C4033;
     /* font-style: italic; */
-    margin-bottom: 40px;
-}
-
-.caption {
-    margin-bottom: 50px;
+    /* margin-bottom: 40px; */
 }
 
 .caption .round-icard h4 {
