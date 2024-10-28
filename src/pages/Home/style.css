@@ -2,137 +2,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
   }
-
-  .container-2 {
-    display: flex;
-    flex-direction: row;
-    margin: 30px; 
-    justify-content: center;
-    padding: 40px;
-    background-color: #f8f5f1;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-  
-  .fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .owner-image {
-    height: auto;
-    max-height: 500px;
-    max-width: 100%;
-    border-radius: 12px;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .owner-image:hover {
-    transform: scale(1.05);
-  }
-  
-  .section-title {
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 24px;
-    color: #d96e67;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-  }
-  
-  .owner-name {
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-size: 36px;
-    color: #3e2723;
-    letter-spacing: 1.2px;
-  }
-  
-  .owner-description {
-    font-size: 18px;
-    color: #4f4f4f;
-    line-height: 1.7;
-    width: 90%;
-  }
-  
-  .all-description {
-    padding: 20px;
-  }
-  
-  .section-title:hover {
-    color: #b6544c;
-  }
-  
-  @media (max-width: 768px) {
-    .owner-name {
-      font-size: 32px;
-    }
-  
-    .owner-description {
-      font-size: 16px;
-      width: 95%;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .section-title {
-      font-size: 20px;
-    }
-  
-    .owner-name {
-      font-size: 28px;
-    }
-  
-    .owner-description {
-      font-size: 14px;
-      width: 100%;
-    }
-  
-    .owner-image {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-  }
-  
-
-@media (max-width: 768px) {
-  .owner-name {
-    font-size: 32px;
-  }
-
-  .owner-description {
-    font-size: 16px;
-    width: 95%;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-title {
-    font-size: 20px;
-  }
-
-  .owner-name {
-    font-size: 28px;
-  }
-
-  .owner-description {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  .owner-image {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-
+ 
 .round-icard img {
     margin: 0 auto;
     display: block;
@@ -140,7 +10,7 @@ body{
 }
 
 .round-icard h4 {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .container-3 .round-icard h4 {
@@ -156,12 +26,15 @@ body{
 
 .caption .round-icard h4 {
     font-size: 15px;
-    color: #992626;
+    color: #333;
 }
 
 .caption .round-icard h6 {
-    font-size: 40px;
-    color: #563412;
+    font-size: 30px;
+    color:#8d6e63;
+    width:100%;
+    margin-bottom: 50px;
+    
 }
 
 
@@ -191,7 +64,6 @@ body{
     padding: 20px;
     display: flex;
     justify-content: space-around;
-    height: 100%;
     
 }
 
@@ -203,7 +75,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .location {

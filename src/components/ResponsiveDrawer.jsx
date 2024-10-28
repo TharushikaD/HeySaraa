@@ -70,13 +70,13 @@ function ResponsiveDrawer(props) {
         sx={{
           width: '100%',
           backgroundColor: '#8d6e63', 
-          height: '90px',
+          height: '70px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
         }}
       >
         <Toolbar>
           <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-            <img src="/logo2.png" alt="logo" style={{ height: '90px' }} />
+            <img src="/logo2.png" alt="logo" style={{ height: '70px' }} />
           </Box>
           {isMobile ? (
             <>

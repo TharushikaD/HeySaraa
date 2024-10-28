@@ -91,7 +91,7 @@ export default function SignInSide() {
       })
       .then(function (response) {
         console.log(response);
-        Alert('Success', 'User Signed Up Successfully!', 'success');
+        Alert('Success', 'Signed Up Successfully!', 'success');
         clearText();
       })
       .catch(function (error) {
@@ -111,6 +111,7 @@ export default function SignInSide() {
     if (validateForm()) {
       const data = new FormData(event.currentTarget);
       console.log({
+        name:data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
       });
