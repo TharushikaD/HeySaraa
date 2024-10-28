@@ -69,6 +69,8 @@ export default function SignInSide() {
       })
       .then(function (response) {
         console.log(response);
+        const token = response.data.token; // Extract token from response
+        localStorage.setItem('token', token); // Store token in localStorage
         Alert('Success', 'Signing In!', 'success');
         clearText();
       })
