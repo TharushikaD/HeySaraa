@@ -105,7 +105,7 @@ export default function EleganceAI() {
           </Typography>
           <Typography variant="body1" paragraph sx={{ color: '#34495e', marginBottom: 2 }}>
             Your face shape plays a crucial role in determining the most flattering hairstyles for you.
-            At Elegance AI, we analyze your facial features to suggest hairstyles that enhance your natural beauty.
+            Elegance AI, analyze your facial features to suggest hairstyles that enhance your natural beauty.
           </Typography>
 
           <Box sx={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', marginTop: 2 }}>

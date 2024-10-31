@@ -19,14 +19,14 @@ import { Alert } from '../../components/Alert/Alert';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#d89685', 
+      main: '#d89685',
     },
     secondary: {
-      main: '#992626', 
+      main: '#992626',
     },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif', 
+    fontFamily: 'Roboto, sans-serif',
   },
 });
 
@@ -88,6 +88,7 @@ export default function SignInSide() {
         name: name,
         email: email,
         password: password,
+        role: 'customer', 
       })
       .then(function (response) {
         console.log(response);
@@ -111,7 +112,7 @@ export default function SignInSide() {
     if (validateForm()) {
       const data = new FormData(event.currentTarget);
       console.log({
-        name:data.get('name'),
+        name: data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
       });
@@ -132,7 +133,7 @@ export default function SignInSide() {
             backgroundColor: (t) => t.palette.grey[50],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.9, 
+            opacity: 0.9,
           }}
         />
         <Grid
@@ -145,7 +146,7 @@ export default function SignInSide() {
           square
           sx={{
             backgroundColor: '#f8f8f8',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)', 
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
           }}
         >
           <Box
@@ -217,6 +218,7 @@ export default function SignInSide() {
                   style: { borderRadius: '12px' },
                 }}
               />
+
               <FormControlLabel
                 control={<Checkbox value="remember" />}
                 label="Remember me"

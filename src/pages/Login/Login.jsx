@@ -15,36 +15,25 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import axios from 'axios';
 import { Alert } from '../../components/Alert/Alert';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="http://localhost:5177/home">
-        Hey Saraa
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState(false);
+  const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const validateForm = () => {
     let isValid = true;
 
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError(true);
+    if (!name) {
+      setNameError(true);
       isValid = false;
     } else {
-      setEmailError(false);
+      setNameError(false);
     }
 
     if (password.length < 6) {
@@ -64,34 +53,41 @@ export default function SignInSide() {
 
     axios
       .post('http://127.0.0.1:5000/login', {
-        email: email,
+        name: name,
         password: password,
       })
-      .then(function (response) {
-        console.log(response);
-        const token = response.data.token; // Extract token from response
-        localStorage.setItem('token', token); // Store token in localStorage
+      .then((response) => {
+        const { access_token, name, user_id, role } = response.data;
+        localStorage.setItem('token', access_token); // store `access_token` as `token`
+        localStorage.setItem('name', name);
+        localStorage.setItem('userId', user_id); // store `user_id` as `userId`
+        localStorage.setItem('role', role);
+      
+        console.log('Login successful:', { token: access_token, name, user_id, role });
+      
         Alert('Success', 'Signing In!', 'success');
         clearText();
+      
+        if (role === 'admin') {
+          navigate('/adminDashboard');
+        } else if (role === 'customer') {
+          navigate('/customerDashboard');
+        }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
         Alert('Failed', 'Something Went Wrong!', 'error');
       });
   };
 
   const clearText = () => {
-    setEmail('');
+    setName('');
     setPassword('');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    loginAction();
   };
 
   return (
@@ -143,14 +139,14 @@ export default function SignInSide() {
                 required
                 size='small'
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
                 autoFocus
-                error={emailError}
-                helperText={emailError ? 'Invalid email format' : ''}
-                onChange={(event) => setEmail(event.target.value)}
+                error={nameError}
+                helperText={nameError ? 'Name is required' : ''}
+                onChange={(event) => setName(event.target.value)}
                 InputProps={{
                   style: { borderRadius: '12px', boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)' },
                 }}
@@ -192,7 +188,6 @@ export default function SignInSide() {
                   padding: '10px 20px',
                   boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
                 }}
-                onClick={loginAction}
               >
                 Sign In
               </Button>
@@ -208,7 +203,14 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5, color: '#9b897d' }} />
+              <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 5, color: '#9b897d' }}>
+                {'Copyright © '}
+                <Link color="inherit" href="http://localhost:5177/home">
+                  Hey Saraa
+                </Link>{' '}
+                {new Date().getFullYear()}
+                {'.'}
+              </Typography>
             </Box>
           </Box>
         </Grid>
