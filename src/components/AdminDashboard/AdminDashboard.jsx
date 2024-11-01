@@ -22,6 +22,7 @@ import { Link, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Modal from '@mui/material/Modal';
@@ -127,7 +128,7 @@ export default function AdminDashboard() {
 
     const handleProfileClick = () => {
         handleMenuClose();
-        setProfileOpen(true); 
+        setProfileOpen(true);
     };
 
     const handleModalClose = () => {
@@ -218,7 +219,8 @@ export default function AdminDashboard() {
                                             color: 'white',
                                         }}
                                     >
-                                        {index % 2 === 0 ? <AccountBoxIcon /> : <SupportAgentIcon />}
+                                        {val.name === 'Product Management' ? <InventoryIcon /> : 
+                                         index % 3 === 0 ? <AccountBoxIcon /> : <SupportAgentIcon />}
                                     </ListItemIcon>
                                     <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
                                 </ListItemButton>
@@ -231,7 +233,7 @@ export default function AdminDashboard() {
                 <DrawerHeader />
                 <Routes>
                     {getRoutes(adminRoutes)}
-                    <Route path="*" element={<Navigate to="/adminDashboard/users" replace={true} />} />
+                    <Route path="*" element={<Navigate to="/adminDashboard/productManagement" replace={true} />} />
                 </Routes>
             </Box>
             <Modal
