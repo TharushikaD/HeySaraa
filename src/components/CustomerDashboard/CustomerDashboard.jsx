@@ -231,7 +231,7 @@ export default function CustomerDashboard() {
                 <DrawerHeader />
                 <Routes>
                     {getRoutes(routes)}
-                    <Route path="*" element={<Navigate to="/profile" replace={true} />} />
+                    <Route path="*" element={<Navigate to="/faceshapeDetector" replace={true} />} />
                 </Routes>
             </Box>
             <Modal

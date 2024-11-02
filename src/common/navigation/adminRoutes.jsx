@@ -1,6 +1,8 @@
 import Users from "../../pages/Users/Users";
 import AdminServices from "../../pages/AdminServices/AdminServices";
 import ProductManagement from "../../pages/ProductManagement/ProductManagement";
+import FaceShapeDetector from "../../pages/FaceShpeDetector/FaceShapeDetector";
+
 
 const adminRoutes = [
     {
@@ -22,6 +24,13 @@ const adminRoutes = [
         path: '/productManagement',
         component: ProductManagement,
 
+    },
+    {
+        name: 'Elegance AI',
+        key: 'faceshapeDetector',
+        path: '/faceshapeDetector',
+        component:FaceShapeDetector,
+    
     }
 
 
