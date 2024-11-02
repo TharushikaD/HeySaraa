@@ -2,6 +2,7 @@ import Users from "../../pages/Users/Users";
 import AdminServices from "../../pages/AdminServices/AdminServices";
 import ProductManagement from "../../pages/ProductManagement/ProductManagement";
 import FaceShapeDetector from "../../pages/FaceShpeDetector/FaceShapeDetector";
+import HaircutManagement from "../../pages/HairCutManagement/HairCutManagement";
 
 
 const adminRoutes = [
@@ -31,7 +32,15 @@ const adminRoutes = [
         path: '/faceshapeDetector',
         component:FaceShapeDetector,
     
+    },
+    {
+        name: 'HairCut Management',
+        key: 'haircutManagement',
+        path: '/haircutManagement',
+        component:HaircutManagement,
+    
     }
+   
 
 
 ];
