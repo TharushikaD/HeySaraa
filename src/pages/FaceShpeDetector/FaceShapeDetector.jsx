@@ -124,7 +124,7 @@ const FaceShapeDetector = () => {
                 <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold', color: '#333' }}>
                     Face Shape Detector
                 </Typography>
-                <Button variant="contained" color="primary" onClick={startCamera} style={{ margin: '10px', borderRadius: '20px' }}>
+                <Button variant="contained" onClick={startCamera} style={{ margin: '10px', borderRadius: '20px', backgroundColor:'#555555', color:'#fff' }}>
                     Start Camera
                 </Button>
                 <div>
@@ -138,12 +138,12 @@ const FaceShapeDetector = () => {
                 </div>
                 <Grid container spacing={2} justifyContent="center">
                     <Grid item>
-                        <Button variant="contained" color="secondary" onClick={captureImage} style={{ borderRadius: '20px' }}>
+                        <Button variant="contained"  onClick={captureImage} style={{ borderRadius: '20px', backgroundColor:'#f9afa6', color:'#fff' }}>
                             Capture Image
                         </Button>
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="success" onClick={detectFaceShape} style={{ borderRadius: '20px' }}>
+                        <Button variant="contained"  onClick={detectFaceShape} style={{ borderRadius: '20px',backgroundColor:'#f9afa6',color:'#fff' }}>
                             Detect Face Shape
                         </Button>
                     </Grid>
