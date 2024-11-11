@@ -69,7 +69,7 @@ export default function Home() {
         >
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Box component="img" src="ele.jpg" alt="Elegance AI" sx={{ width: '100%', borderRadius: 3, boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }} />
+              <Box component="img" src="ele.jpg" alt="Elegance AI" sx={{ width: '90%', borderRadius: 3, boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }} />
             </Grid>
             <Grid item xs={12} md={6} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
               <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 700, color: '#2c3e50' }}>

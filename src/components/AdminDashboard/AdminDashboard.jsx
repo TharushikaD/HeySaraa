@@ -233,7 +233,7 @@ export default function AdminDashboard() {
                 <DrawerHeader />
                 <Routes>
                     {getRoutes(adminRoutes)}
-                    <Route path="*" element={<Navigate to="/adminDashboard/faceshapeDetector" replace={true} />} />
+                    <Route path="*" element={<Navigate to="/adminDashboard/haircutManagement" replace={true} />} />
                 </Routes>
             </Box>
             <Modal
