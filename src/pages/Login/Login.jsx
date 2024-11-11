@@ -58,16 +58,16 @@ export default function SignInSide() {
       })
       .then((response) => {
         const { access_token, name, user_id, role } = response.data;
-        localStorage.setItem('token', access_token); // store `access_token` as `token`
+        localStorage.setItem('token', access_token);
         localStorage.setItem('name', name);
-        localStorage.setItem('userId', user_id); // store `user_id` as `userId`
+        localStorage.setItem('userId', user_id);
         localStorage.setItem('role', role);
-      
+
         console.log('Login successful:', { token: access_token, name, user_id, role });
-      
+
         Alert('Success', 'Signing In!', 'success');
         clearText();
-      
+
         if (role === 'admin') {
           navigate('/adminDashboard');
         } else if (role === 'customer') {
@@ -116,6 +116,9 @@ export default function SignInSide() {
           sx={{
             borderRadius: '12px',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           <Box
@@ -125,6 +128,7 @@ export default function SignInSide() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              width: '50%'
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: '#992626', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
@@ -192,15 +196,17 @@ export default function SignInSide() {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
+                <Grid item xs style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                   <Link href="#" variant="body2" sx={{ color: '#9b897d' }}>
                     Forgot password?
                   </Link>
                 </Grid>
-                <Grid item>
-                  <Link href="http://localhost:5173/register" variant="body2" sx={{ color: '#9b897d' }}>
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                <Grid container style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Grid item >
+                    <Link href="http://localhost:5173/register" variant="body2" sx={{ color: '#9b897d' }}>
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
                 </Grid>
               </Grid>
               <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 5, color: '#9b897d' }}>
