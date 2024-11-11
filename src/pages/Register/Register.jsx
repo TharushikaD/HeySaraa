@@ -147,6 +147,9 @@ export default function SignInSide() {
           sx={{
             backgroundColor: '#f8f8f8',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           <Box
@@ -156,6 +159,7 @@ export default function SignInSide() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              width: '50%'
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: '#992626' }}>
@@ -218,12 +222,6 @@ export default function SignInSide() {
                   style: { borderRadius: '12px' },
                 }}
               />
-
-              <FormControlLabel
-                control={<Checkbox value="remember" />}
-                label="Remember me"
-                sx={{ color: '#992626' }}
-              />
               <Button
                 type="submit"
                 fullWidth
@@ -242,8 +240,8 @@ export default function SignInSide() {
               >
                 Sign Up
               </Button>
-              <Grid container>
-                <Grid item>
+              <Grid container style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <Grid item >
                   <Link href="http://localhost:5173/login" variant="body2" sx={{ color: '#9b897d' }}>
                     {'Already have an account? Sign In'}
                   </Link>
